@@ -1,0 +1,287 @@
+# =============================================================================
+# Vision Transformer Deep Dive — .gitignore
+# =============================================================================
+
+# ── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+
+# Distribution / Packaging
+.Python
+build/
+dist/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+MANIFEST
+sdist/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ── Jupyter Notebook ─────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# ── NumPy / PyTorch / timm cache ─────────────────────────────────────────────
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.ckpt
+*.msgpack
+
+# Framework caches (PyTorch, timm, accelerate)
+.torch_cache/
+.timm_cache/
+.accelerate_cache/
+
+# ── HuggingFace / timm / CLIP cache ──────────────────────────────────────────
+# 사전학습 ViT · DINO · MAE · CLIP · BLIP · LLaVA 등 다운로드 캐시
+.cache/huggingface/
+hub/
+models--*/
+datasets_cache/
+transformers_cache/
+timm_cache/
+clip_cache_dl/
+
+# ── 사전 학습 가중치 / 체크포인트 ──────────────────────────────────────────────
+# ViT · DeiT · Swin · PVT · DINO · DINOv2 · iBOT · MAE · BEiT · CLIP · BLIP · LLaVA · Flamingo
+pretrained/
+weights/
+checkpoints/
+*.ckpt
+*.safetensors
+*.bin
+
+# Custom-trained backbone / head
+trained_models/
+finetuned/
+
+# Linear probe · k-NN evaluation 산출물
+linear_probe/
+knn_eval/
+
+# ── 데이터셋 / 학습 데이터 ──────────────────────────────────────────────────
+# ImageNet-1k · ImageNet-22k · CIFAR-10/100 · LAION subset · COCO · ADE20K 등
+data/
+datasets/
+raw/
+processed/
+!data/.gitkeep
+
+# 대규모 vision · vision-language dataset
+imagenet/
+imagenet22k/
+laion/
+coco/
+ade20k/
+cc3m/
+cc12m/
+yfcc100m/
+
+# Image / feature 캐시
+*.h5
+*.hdf5
+*.lmdb
+*.tfrecord
+
+# ── Experiment outputs ───────────────────────────────────────────────────────
+# 생성된 시각화·학습 곡선·plot (각 챕터)
+# Ch1: Patch=Conv 등가 검증 · CLS vs GAP · PE 비교 · inductive bias ablation
+# Ch2: DeiT distillation · Swin window vs ViT global · PVT pyramid feature · CvT/CoAtNet 비교
+# Ch3: SimCLR/MoCo InfoNCE 곡선 · BYOL/SimSiam stop-grad ablation · MI bound tightness
+# Ch4: DINO attention map · k-NN linear probe · DINOv2 multi-objective 기여도
+# Ch5: MAE 75% mask reconstruction · BEiT dVAE token · SimMIM 비교 · MaskFeat/MVP target
+# Ch6: CLIP zero-shot accuracy · BLIP caption · LLaVA instruction · Flamingo few-shot
+# Ch7: NeRF rendering · 3D-GS · TimeSformer / VideoMAE · scaling law plot
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.pdf
+*.gif
+*.mp4
+*.webm
+*.webp
+
+# 생성된 sample / 시각화
+samples/
+generated/
+attention_maps/
+feature_maps/
+patch_grids/
+reconstructions/
+
+# 훈련 결과 / 로깅
+results/
+outputs/
+logs/
+runs/
+wandb/
+mlruns/
+tensorboard/
+tb_logs/
+lightning_logs/
+*.log
+*.csv
+*.tfevents.*
+
+# Sampling / inference video (DINO segmentation, video MAE)
+videos/
+recordings/
+*.mov
+*.avi
+
+# 재현 실험 산출물 (논문별)
+reproductions/dosovitskiy2021_vit/*.pt
+reproductions/touvron2021_deit/*.pt
+reproductions/liu2021_swin/*.pt
+reproductions/wang2021_pvt/*.pt
+reproductions/wu2021_cvt/*.pt
+reproductions/dai2021_coatnet/*.pt
+reproductions/chen2020_simclr/*.pt
+reproductions/he2020_moco/*.pt
+reproductions/grill2020_byol/*.pt
+reproductions/chen2021_simsiam/*.pt
+reproductions/caron2021_dino/*.pt
+reproductions/zhou2022_ibot/*.pt
+reproductions/oquab2024_dinov2/*.pt
+reproductions/bao2022_beit/*.pt
+reproductions/he2022_mae/*.pt
+reproductions/xie2022_simmim/*.pt
+reproductions/wei2022_maskfeat/*.pt
+reproductions/radford2021_clip/*.pt
+reproductions/li2022_blip/*.pt
+reproductions/li2023_blip2/*.pt
+reproductions/liu2023_llava/*.pt
+reproductions/alayrac2022_flamingo/*.pt
+reproductions/mildenhall2020_nerf/*.pt
+reproductions/kerbl2023_gs3d/*.pt
+reproductions/bertasius2021_timesformer/*.pt
+reproductions/tong2022_videomae/*.pt
+reproductions/zhai2022_scaling_vit/*.pt
+
+# ── Hyperparameter sweeps ────────────────────────────────────────────────────
+sweeps/
+optuna_studies/
+*.db
+*.sqlite
+*.sqlite3
+
+# ── Embedding / feature 캐시 ─────────────────────────────────────────────────
+# 사전 계산된 vision · text embedding (CLIP, DINO, MAE)
+image_embeddings/
+text_embeddings/
+clip_cache/
+dino_cache/
+mae_features/
+prompt_cache/
+
+# ── IDE / Editor ─────────────────────────────────────────────────────────────
+# JetBrains (PyCharm, IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Vim / Emacs
+*.swp
+*.swo
+*~
+\#*\#
+.\#*
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+.directory
+
+# ── Documentation build ──────────────────────────────────────────────────────
+docs/_build/
+docs/generated/
+site/
+.mkdocs_cache/
+
+# ── Secrets / Credentials ────────────────────────────────────────────────────
+.env.local
+.env.*.local
+secrets.py
+credentials.json
+*.pem
+*.key
+openai_api_key*
+hf_token*
+wandb_api_key*
+anthropic_api_key*
+
+# ── GPU / CUDA cache ─────────────────────────────────────────────────────────
+.nv_cache/
+.nvidia/
+*.cu.o
+.torch_extensions/
+
+# xformers / flash-attention 빌드 캐시
+.xformers_cache/
+.flash_attn_cache/
+
+# ── Compiled extensions / build artifacts ────────────────────────────────────
+*.ninja
+*.ninja_log
+*.ninja_deps
+
+# ── Miscellaneous ────────────────────────────────────────────────────────────
+.hypothesis/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+*.mo
+*.pot
