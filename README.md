@@ -16,15 +16,15 @@ $$z_0 = [x_{\text{class}};\, x_p^1 E;\, \ldots;\, x_p^N E] + E_{\text{pos}}, \qq
 >
 > $$L = -\sum_x p_t(x)^\top \log p_s(x), \quad p_t = \mathrm{softmax}\!\left(\frac{f_{\theta_t}(x) - c}{\tau_t}\right),\ \ p_s = \mathrm{softmax}\!\left(\frac{f_{\theta_s}(x)}{\tau_s}\right)$$
 >
-> *에서 teacher 가 EMA $\theta_t \leftarrow \lambda \theta_t + (1-\lambda) \theta_s$ 로 업데이트되고, **centering $c$ + sharpening $\tau_t < \tau_s$** 가 mode collapse 를 어떻게 막는지 — 그리고 그 결과 attention map 이 자연스럽게 **object segmentation** 으로 떠오르는지를 유도할 수 있는 것은 다르다.*
+> *에서 teacher 가 EMA* $\theta_t \leftarrow \lambda \theta_t + (1-\lambda) \theta_s$ *로 업데이트되고,* **centering** $c$ **+ sharpening** $\tau_t \lt \tau_s$ *가 mode collapse 를 어떻게 막는지 — 그리고 그 결과 attention map 이 자연스럽게* **object segmentation** *으로 떠오르는지를 유도할 수 있는 것은 다르다.*
 >
-> *MAE 를 **"masked autoencoder"** 로 아는 것 과, He et al. (2022) 의 **75% mask ratio** 가 왜 BERT 의 15% 보다 5 배나 큰지 (이미지의 spatial redundancy), **asymmetric encoder–decoder** 가 어떻게 visible patch 만 처리해 $4\times$ 이상 가속을 얻는지를 정보이론적으로 설명할 수 있는 것은 다르다.*
+> *MAE 를* **"masked autoencoder"** *로 아는 것 과, He et al. (2022) 의* **75% mask ratio** *가 왜 BERT 의 15% 보다 5 배나 큰지 (이미지의 spatial redundancy),* **asymmetric encoder–decoder** *가 어떻게 visible patch 만 처리해* $4\times$ *이상 가속을 얻는지를 정보이론적으로 설명할 수 있는 것은 다르다.*
 >
-> *CLIP 의 **`logits = image_features @ text_features.T / temperature`** 코드 한 줄이 사실은 Radford et al. (2021) 의 symmetric InfoNCE*
+> *CLIP 의* **`logits = image_features @ text_features.T / temperature`** *코드 한 줄이 사실은 Radford et al. (2021) 의 symmetric InfoNCE*
 >
 > $$L = \tfrac12\!\left( -\log \tfrac{\exp(s_{ii}/\tau)}{\sum_j \exp(s_{ij}/\tau)} - \log \tfrac{\exp(s_{ii}/\tau)}{\sum_j \exp(s_{ji}/\tau)} \right)$$
 >
-> *의 직접 구현이고, $\tau$ 가 **uniformity–alignment trade-off** 의 하이퍼파라미터이며, 이것이 zero-shot transfer 의 mathematical 근거임을 알고 쓰는 것은 다르다.*
+> *의 직접 구현이고,* $\tau$ *가* **uniformity–alignment trade-off** *의 하이퍼파라미터이며, 이것이 zero-shot transfer 의 mathematical 근거임을 알고 쓰는 것은 다르다.*
 
 <br/>
 
